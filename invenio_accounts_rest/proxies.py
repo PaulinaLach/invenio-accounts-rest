@@ -21,12 +21,15 @@
 # In applying this license, CERN does not
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
-#
-# TODO: Add development versions of some important dependencies here to get a
-#       warning when there are breaking upstream changes, e.g.:
-#
-#     -e git+git://github.com/mitsuhiko/werkzeug.git#egg=Werkzeug
-#     -e git+git://github.com/mitsuhiko/jinja2.git#egg=Jinja2
 
--e git+git://github.com/inveniosoftware/invenio-userprofiles.git#egg=invenio-userprofiles
--e git+git://github.com/inveniosoftware/invenio-rest.git#egg=invenio-rest
+"""Helper proxy to the state object."""
+
+from __future__ import absolute_import, print_function
+
+from flask import current_app
+from werkzeug.local import LocalProxy
+
+current_accounts_rest = LocalProxy(
+    lambda: current_app.extensions['invenio-accounts-rest']
+)
+"""Helper proxy to accounts rest state object."""

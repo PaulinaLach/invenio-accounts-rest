@@ -42,7 +42,9 @@ tests_require = [
     'pytest>=2.8.0',
     'Flask-Testing',
     'mock',
+    'jsonpatch',
     'responses>=0.5.1',
+    'invenio-userprofiles>=1.0.0a7',
 ]
 
 extras_require = {

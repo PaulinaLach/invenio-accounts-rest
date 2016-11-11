@@ -21,12 +21,17 @@
 # In applying this license, CERN does not
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
-#
-# TODO: Add development versions of some important dependencies here to get a
-#       warning when there are breaking upstream changes, e.g.:
-#
-#     -e git+git://github.com/mitsuhiko/werkzeug.git#egg=Werkzeug
-#     -e git+git://github.com/mitsuhiko/jinja2.git#egg=Jinja2
 
--e git+git://github.com/inveniosoftware/invenio-userprofiles.git#egg=invenio-userprofiles
--e git+git://github.com/inveniosoftware/invenio-rest.git#egg=invenio-rest
+"""InvenioAccountsREST configuration."""
+
+from .utils import deny_all
+
+
+ACCOUNTS_REST_READ_ROLE_PERMISSION_FACTORY = deny_all
+"""Default get role permission factory: reject any request."""
+
+ACCOUNTS_REST_UPDATE_ROLE_PERMISSION_FACTORY = deny_all
+"""Default update role permission factory: reject any request."""
+
+ACCOUNTS_REST_DELETE_ROLE_PERMISSION_FACTORY = deny_all
+"""Default delete role permission factory: reject any request."""
